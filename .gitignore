@@ -1,0 +1,9 @@
+# Build files
+build/
+
+# CMake
+CMakeCache.txt
+CMakePresets.json
+
+# OS specific
+.DS_Store
