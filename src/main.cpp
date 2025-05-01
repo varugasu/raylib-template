@@ -1,4 +1,6 @@
 #include "raylib.h"
+#include "imgui.h"
+#include "rlImGui.h"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -14,6 +16,7 @@ int main(void) {
   SetTargetFPS(60);  // Set our game to run at 60 frames-per-second
   //--------------------------------------------------------------------------------------
 
+  rlImGuiSetup(true);
   // Main game loop
   while (!WindowShouldClose())  // Detect window close button or ESC key
   {
@@ -25,18 +28,24 @@ int main(void) {
     // Draw
     //----------------------------------------------------------------------------------
     BeginDrawing();
+    rlImGuiBegin();
+
+    bool open = true;
+    ImGui::ShowDemoWindow(&open);
 
     ClearBackground(RAYWHITE);
 
     DrawText("Congrats! You created your first window!", 190, 200, 20,
              LIGHTGRAY);
 
+    rlImGuiEnd();
     EndDrawing();
     //----------------------------------------------------------------------------------
   }
 
   // De-Initialization
   //--------------------------------------------------------------------------------------
+  rlImGuiShutdown();
   CloseWindow();  // Close window and OpenGL context
   //--------------------------------------------------------------------------------------
 
